@@ -1,30 +1,9 @@
 import pytest as pt
 from src.main import *
+from tests.boards import *
 
 
 class TestCheck:
-    # TODO: Bogus, pattern (1-9 rows), wrong_full, right_full,  Board
-    pattern_board = [[j for j in range(9)] for i in range(9)]
-    bogus_board = [[i*9+j for j in range(9)] for i in range(9)]
-    wrong_complete_board = [[9, 7, 4, 2, 3, 6, 1, 5, 8],
-                            [6, 3, 8, 5, 9, 1, 7, 4, 2],
-                            [1, 2, 5, 4, 8, 7, 9, 3, 6],
-                            [3, 1, 6, 7, 5, 4, 2, 8, 9],
-                            [7, 4, 2, 9, 1, 8, 5, 6, 3],
-                            [5, 8, 9, 3, 6, 2, 4, 1, 7],
-                            [8, 6, 7, 1, 2, 5, 3, 9, 4],
-                            [2, 5, 3, 6, 4, 9, 8, 7, 1],
-                            [4, 9, 1, 8, 7, 3, 6, 2, 5]]
-    right_complete_board = [[3, 6, 5, 4, 2, 7, 8, 1, 9],
-                            [4, 8, 7, 9, 3, 1, 5, 2, 6],
-                            [1, 2, 9, 8, 5, 6, 3, 7, 4],
-                            [8, 5, 2, 7, 9, 3, 6, 4, 1],
-                            [6, 1, 3, 2, 4, 8, 9, 5, 7],
-                            [9, 7, 4, 1, 6, 5, 2, 8, 3],
-                            [2, 4, 1, 3, 8, 9, 7, 6, 5],
-                            [5, 3, 8, 6, 7, 4, 1, 9, 2],
-                            [7, 9, 6, 5, 1, 2, 4, 3, 8]]
-
     def test_check_cell(self):
         for i in range(9): check_cell(i)
         check_cell(None)
@@ -66,14 +45,13 @@ class TestCheck:
         with pt.raises(InvalidCell): is_group_valid([[0, 1, 2], [-1, 6, 5], [3, 7, 4]])
         with pt.raises(InvalidVector): is_group_valid([[0, 1, 2], [3, 7, 4]])
         assert is_group_valid([[None]*3 for i in range(3)]) is False
-        # with pt.raises(InvalidVector): is_group_valid([[0, 10], [0, 1, 2], [0, 2, 4]])
-        # assert False, 1
+        with pt.raises(InvalidVector): is_group_valid([[0, 10], [0, 1, 2], [0, 2, 4]])
 
     def test_get_group(self):
-        assert get_group(self.wrong_complete_board, 0) == [[9, 7, 4], [6, 3, 8], [1, 2, 5]]
-        assert get_group(self.wrong_complete_board, 5) == [[2, 8, 9], [5, 6, 3], [4, 1, 7]]
-        assert get_group(self.wrong_complete_board, 8) == [[3, 9, 4], [8, 7, 1], [6, 2, 5]]
-        assert get_group(self.right_complete_board, 8) == [[7, 6, 5], [1, 9, 2], [4, 3, 8]]
-        assert get_group(self.bogus_board, 6)          == [[54, 55, 56], [63, 64, 65], [72, 73, 74]]
-        with pt.raises(InvalidIndex): get_group(self.wrong_complete_board, 9)
-        with pt.raises(InvalidIndex): get_group(self.bogus_board, -1)
+        assert get_group(wrong_complete_board, 0) == [[9, 7, 4], [6, 3, 8], [1, 2, 5]]
+        assert get_group(wrong_complete_board, 5) == [[2, 8, 9], [5, 6, 3], [4, 1, 7]]
+        assert get_group(wrong_complete_board, 8) == [[3, 9, 4], [8, 7, 1], [6, 2, 5]]
+        assert get_group(right_complete_board, 8) == [[7, 6, 5], [1, 9, 2], [4, 3, 8]]
+        assert get_group(bogus_board, 6)          == [[54, 55, 56], [63, 64, 65], [72, 73, 74]]
+        with pt.raises(InvalidIndex): get_group(wrong_complete_board, 9)
+        with pt.raises(InvalidIndex): get_group(bogus_board, -1)

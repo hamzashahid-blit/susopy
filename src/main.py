@@ -1,5 +1,5 @@
 # Sudoku board -> sboard
-sboard = list[list[int]]
+sboard = [[int]]
 sgroup = sboard
 my_board = [[0]*9 for _ in range(9)]
 for i in range(9):
@@ -31,6 +31,7 @@ def flatten(iterable: collection) -> list:
 
 # vector = row or column
 def is_vector_valid (vector: list) -> bool:
+	"A vector can be a row, column or flattened group"
 	if len(vector) != 9: raise InvalidVector("Length of vector != 9")
 	count = [0]*9
 	for num in vector:
@@ -41,6 +42,10 @@ def is_vector_valid (vector: list) -> bool:
 		else:
 			return False
 	return True
+
+def is_group_valid (group: sgroup) -> bool:
+	# group is technically just a long row/col when flattened
+	return is_vector_valid(flatten(group))
 
 # num is zero-indexed 
 def get_group (board: sboard, index: int) -> sgroup:
@@ -56,24 +61,20 @@ def get_group (board: sboard, index: int) -> sgroup:
 		x += 1
 	return group
 
-def is_group_valid (group: sgroup) -> bool:
-	# group is technically just a long row/col when flattened
-	return is_vector_valid(flatten(group))
+def get_cols(board: sboard) -> [[int]]:
+	return [[board[j][i] for j in range(9)] for i in range(9)]
 
-def check_board (board: sboard) -> list[list[bool]]:
+def get_rows(board: sboard) -> [[int]]:
+	return [board[i] for i in range(9)]
+
+def get_groups(board: sboard) -> [sgroup]:
+	return [get_group(board, i) for i in range(9)]
+
+def check_board (board: sboard) -> [[bool]]:
 	pass
-	# cols = [[board[j][i] for j in range(9)] for i in range(9)]
-	# rows = [board[i] for i in range(9)]
-	# groups = [get_group(board, i) for i in range(9)]
 	# is_cols_valid = [is_vector_valid(col) for col in cols]
 	# is_rows_valid = [is_vector_valid(row) for row in rows]
 	# is_groups_valid = [is_group_valid(group) for group in groups]
-	# # print(is_groups_valid)
 
-# print(check_board(my_board))
-# print(is_group_valid(get_group(my_board, 0)))
-
-# print(is_vector_valid([0,1,2,3,1000]))
- 
 if __name__ == "__main__":
 	check_board(my_board)
