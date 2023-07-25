@@ -9,8 +9,8 @@ I like Sudoku and thought making a solver for it would allow for me to learn
 more about Python, and have some fun!
 
 * Milestones
-** DONE Backtracking Algorithm
-** TODO GUI
+  + +DONE Backtracking Algorithm+
+  + TODO GUI
 
 * Usage
 First clone the repository:
