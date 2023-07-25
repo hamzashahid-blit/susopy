@@ -49,7 +49,6 @@ def is_group_valid (group: sgroup, allow_empty: bool = False) -> bool:
     # group is technically just a long row/col when flattened
     return is_vector_valid(flatten(group), allow_empty)
 
-# num is zero-indexed 
 def get_group (board: sboard, index: int) -> sgroup:
     check_index(index)
     col = (index % 3) * 3

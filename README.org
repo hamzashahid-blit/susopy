@@ -1,0 +1,35 @@
+#+TITLE: Susopy - Sudoku Solver in Python
+#+AUTHOR: Hamza Shahid
+
+* Description
+Susopy aims to be a complete sudoku solver with a GUI and multiple solving algorithms.
+
+* Why?
+I like Sudoku and thought making a solver for it would allow for me to learn
+more about Python, and have some fun!
+
+* Milestones
+** DONE Backtracking Algorithm
+** TODO GUI
+
+* Usage
+First clone the repository:
+#+begin_src sh
+  $ git clone https://codeberg.org/bitblit/sudoku-solver-py 
+#+end_src
+Go into the directory:
+#+begin_src sh
+  $ cd sudoku-solver-py/tests/
+#+end_src
+Run the tests to check if it working:
+#+begin_src sh
+  $ ./run-tests.sh
+#+end_src
+It should start solving around 50 boards which are included in tests/boards.py
+thanks to [[https://www.kaggle.com/datasets/rohanrao/sudoku][this dataset]]. Algorithm tests are written in tests/test_algos.py
+
+* Author(s)
++ Hamza Shahid
+
+* License
+Susopy is licensed under the [[https://unlicense.org][Unlicense]] License

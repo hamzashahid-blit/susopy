@@ -5,6 +5,6 @@ from tests.boards import *
 
 class TestAlgos:
     def test_backtrack (self):
-        # assert backtrack(problem_boards[0]) is solution_boards[0]
         assert check_board(backtrack(easy_board), False) == True
-        assert check_board(problem_boards[0], True) == True
+        for i in range(len(problem_boards)):
+            assert backtrack(problem_boards[i]) == solution_boards[i]
