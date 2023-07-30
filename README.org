@@ -1,7 +1,7 @@
 #+TITLE: Susopy - Sudoku Solver in Python
 #+AUTHOR: Hamza Shahid
 
-* WARNING: This project has moved to https://codeberg.org/bitblit/sudoku-solver-py 
+* WARNING: This project has moved to https://codeberg.org/bitblit/susopy
 
 * Description
 Susopy aims to be a complete sudoku solver with a GUI and multiple solving algorithms.
@@ -17,7 +17,7 @@ more about Python, and have some fun!
 * Usage
 First clone the repository:
 #+begin_src sh
-  $ git clone https://codeberg.org/bitblit/sudoku-solver-py 
+  $ git clone https://codeberg.org/bitblit/susopy
 #+end_src
 Go into the directory:
 #+begin_src sh
